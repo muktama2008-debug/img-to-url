@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google Drive Direct Image URL Converter (PRO)</title>
+
+<style>
+    body{
+        background:#111;
+        color:#fff;
+        font-family:Arial;
+        text-align:center;
+        padding:40px;
+    }
+    .box{
+        background:#1a1a1a;
+        padding:30px;
+        width:90%;
+        max-width:600px;
+        margin:auto;
+        border-radius:15px;
+        box-shadow:0 0 20px #000;
+    }
+    h2{
+        color:#00ff99;
+        margin-bottom:10px;
+    }
+    input, textarea{
+        width:100%;
+        padding:12px;
+        border-radius:10px;
+        border:none;
+        margin-top:15px;
+        background:#000;
+        color:#0f0;
+        font-size:15px;
+    }
+    button{
+        margin-top:20px;
+        padding:12px 25px;
+        background:#00ff99;
+        color:#000;
+        border:none;
+        font-weight:bold;
+        border-radius:8px;
+        cursor:pointer;
+    }
+    #preview{
+        margin-top:25px;
+        max-width:100%;
+        display:none;
+        border-radius:10px;
+        border:2px solid #444;
+    }
+</style>
+</head>
+<body>
+
+<!-- ⭐ Ad 1 — Top -->
+<div style="margin-bottom:20px;">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '8a8663e51f0f52b927018d411ec28a6e',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/8a8663e51f0f52b927018d411ec28a6e/invoke.js"></script>
+</div>
+
+<div class="box">
+    <h2>Google Drive → Direct Image URL Converter</h2>
+
+    <!-- ⭐ Ad 2 — Inside box under title -->
+    <div style="margin:15px 0;">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '8a8663e51f0f52b927018d411ec28a6e',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/8a8663e51f0f52b927018d411ec28a6e/invoke.js"></script>
+    </div>
+
+    <p>Paste your Google Drive Sharing Link below</p>
+
+    <input id="driveLink" type="text" placeholder="Paste Google Drive File Link">
+
+    <textarea id="directUrl" readonly placeholder="Your Direct Image URL will appear here..."></textarea>
+
+    <button onclick="convert()">Convert</button>
+    <button onclick="copyURL()">Copy URL</button>
+
+    <img id="preview">
+</div>
+
+<!-- ⭐ Ad 3 — Bottom -->
+<div style="margin-top:20px;">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '8a8663e51f0f52b927018d411ec28a6e',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/8a8663e51f0f52b927018d411ec28a6e/invoke.js"></script>
+</div>
+
+<script>
+function convert(){
+    const link = document.getElementById("driveLink").value;
+    const output = document.getElementById("directUrl");
+    const preview = document.getElementById("preview");
+
+    if(!link.includes("drive.google.com")){
+        output.value = "Invalid Google Drive link!";
+        return;
+    }
+
+    let fileId = "";
+
+    if(link.includes("id=")){
+        fileId = link.split("id=")[1].split("&")[0];
+    } else if(link.includes("/d/")){
+        fileId = link.split("/d/")[1].split("/")[0];
+    }
+
+    if(!fileId){
+        output.value = "Could not extract File ID!";
+        return;
+    }
+
+    const direct = `https://drive.google.com/uc?export=view&id=${fileId}`;
+    output.value = direct;
+
+    preview.src = direct;
+    preview.style.display = "block";
+}
+
+function copyURL(){
+    const urlBox = document.getElementById("directUrl");
+    urlBox.select();
+    document.execCommand("copy");
+    alert("URL Copied!");
+}
+</script>
+
+</body>
+</html>
